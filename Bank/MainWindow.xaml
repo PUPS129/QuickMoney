@@ -1,0 +1,81 @@
+﻿<Window x:Class="Bank.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bank.Pages"
+        mc:Ignorable="d" Background="{StaticResource MainBckgr}"  SizeChanged="Window_SizeChanged" ResizeMode="CanResize" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" FontSize="15"
+        Title="Quick Money" Height="620" Width="1000" MinHeight="620" MinWidth="1000" FontWeight="Bold">
+
+    <!--<Border BorderBrush="Black" BorderThickness="2" Name="BorderWindow">-->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="210"/>
+            <ColumnDefinition Width="3"/>
+            <ColumnDefinition Width="785*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="440*"/>
+
+        </Grid.RowDefinitions>
+
+        <Border Background="{StaticResource ThrdBckgr}" Height="30" Grid.ColumnSpan="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="210"/>
+                </Grid.ColumnDefinitions>
+                <Border Background="{StaticResource ThrdBckgr}" MouseLeftButtonUp="Border_MouseLeftButtonUp" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown" Grid.Column="0"/>
+                <Label Name="WindowTopBarStatus" Content="Quick Money" HorizontalAlignment="Center" Foreground="White" Grid.ColumnSpan="3" Grid.Column="0"  MouseLeftButtonUp="Border_MouseLeftButtonUp" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown"  Width="104"/>
+            </Grid>
+
+        </Border>
+
+
+        <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
+            <Button  FontSize="10" Width="25" Height="25" Style="{StaticResource MainBtnStyle}" Margin="15,0" Name="LockAppBtn" Click="LockAppBtn_Click">
+                <Image Source="././Images/lockapp.png" Width="25" Height="25"/>
+            </Button>
+            <Button Content="—" Style="{StaticResource MainBtnStyle}" FontWeight="Heavy" Width="50" Height="25" Click="TurnBtn_Click"/>
+            <Button  Style="{StaticResource MainBtnStyle}" FontWeight="Heavy" Width="50" Height="25" FontSize="16" Margin="5,0" Name="ResizeWindow" Click="ResizeWindow_Click">
+                <TextBlock Text="▢" VerticalAlignment="Top" FontWeight="Bold" Height="25" FontSize="18"/>
+            </Button>
+            <Button Name="ExitBtnOnWindow" Content="✖" Style="{StaticResource DeleteBtnStyle}" Width="50" Height="25" Margin="0,0,5,0" Click="ExitBtn_Click"/>
+        </StackPanel>
+
+        <Image Source="././Images/logo.png" Height="80" Width="80" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <Frame Name="Mainframe" Grid.Column="2" NavigationUIVisibility="Hidden" Grid.Row="1" Grid.RowSpan="2"/>
+
+        <Rectangle Fill="{StaticResource ThrdBckgr}" Name="LineFig" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1"/>
+
+        <Border Name="MenuBorder" Background="{StaticResource  ScndBckgr}" VerticalAlignment="Top" Margin="0,15" CornerRadius="25" Height="405" Width="150" Grid.Row="2" Grid.RowSpan="2" >
+            <StackPanel Margin="0,15" HorizontalAlignment="Center">
+
+                <Button Name="MainPageBtn"  Height="50" Width="130" Margin="0,5" Click="MainPageBtn_Click" Style="{StaticResource WhiteBtnStyle}">
+                    <TextBlock Text="Главная страница" TextWrapping="Wrap" TextAlignment="Center"/>
+                </Button>
+
+                <Button Name="ClientsPageBtn" Style="{StaticResource WhiteBtnStyle}" Content="Клиенты" Height="50" Width="130" Margin="0,5"  Click="ClientsPageBtn_Click"/>
+
+                <Button Name="CreditListPageBtn" Style="{StaticResource WhiteBtnStyle}" Height="50" Width="130" Margin="0,5" Click="CreditListPageBtn_Click">
+                    <TextBlock Text="Список кредитов" TextWrapping="Wrap" TextAlignment="Center" Width="120"/>
+                </Button>
+
+                <Button Name="CreditSolutionsBtn" Style="{StaticResource WhiteBtnStyle}" Height="65" Width="130" Margin="0,5" Click="CreditSolutionsBtn_Click">
+                    <TextBlock Text="Список кредитных решений" TextWrapping="Wrap" Width="130" TextAlignment="Center"/>
+                </Button>
+
+                <Button Content="Калькулятор" Style="{StaticResource WhiteBtnStyle}" Height="50" Width="130" Margin="0,5"  Click="Button_Click"/>
+
+                <Button x:Name="ExitBtn" Style="{StaticResource WhiteBtnStyle}" Content="Выход" Height="50" Width="130" Margin="0,5" Click="ExitBtn_Click"/>
+            </StackPanel>
+        </Border>
+
+        <!--<ToggleButton Content="Theme" Name="ChangeThemeBtn" Width="100" Height="25"  Grid.Row="1" Margin="43,391,43,5" Click="ChangeThemeBtn_Click"/>-->
+    </Grid>
+    <!--</Border>-->
+
+</Window>

@@ -1,0 +1,59 @@
+﻿<Page x:Class="Bank.Pages.PayCreditPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Bank.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="571" d:DesignWidth="785" Background="{StaticResource MainBckgr}" FontFamily="Times New Roman" FontSize="20" Foreground="White"
+      Title="PayCreditPage">
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="140*"/>
+            <ColumnDefinition Width="505"/>
+            <ColumnDefinition Width="140*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="185*"/>
+            <RowDefinition Height="213*"/>
+            <RowDefinition Height="173*"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Внесение суммы" Foreground="White" Grid.ColumnSpan="2"/>
+
+        <Border Grid.Row="1" Grid.Column="1" Background="White" CornerRadius="50" Width="450" Height="200" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                <Border Background="{StaticResource MainBckgr}" Width="335" Height="40" CornerRadius="20">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Сумма к оплате:" Foreground="White"/>
+                        <Border Background="White" CornerRadius="12" Height="30" Width="170" Margin="5,0">
+                            <TextBox Name="toPayBx" IsReadOnly="True" TextAlignment="Center" Height="25" Width="160" BorderThickness="0"/>
+                        </Border>
+                        
+                    </StackPanel>
+
+                </Border>
+
+                <Label/>
+                <Border Background="{StaticResource MainBckgr}" Width="335" Height="40" CornerRadius="20">
+                    <StackPanel Orientation="Horizontal" Margin="10,0">
+
+                        <Border Background="White" CornerRadius="12" Height="30" Width="315">
+                            <TextBox Name="PaymentTxtBx" Height="25" Width="300" MaxLength="9" BorderThickness="0"/>
+                        </Border>
+                    </StackPanel>
+                </Border>
+                <StackPanel Orientation="Horizontal" Margin="0,5" HorizontalAlignment="Center">
+                    <Button Content="Оплатить" Style="{StaticResource MainBtnStyle}" Width="100" Height="30" Name="PayBtn" Click="PayBtn_Click"/>
+                    <Button Content="Назад" Tag="{Binding }" Style="{StaticResource MainBtnStyle}" Width="100" Height="30" Margin="5,0" Name="GoBackBtn" Click="GoBackBtn_Click"/>
+                </StackPanel>
+
+
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</Page>

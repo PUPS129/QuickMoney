@@ -1,0 +1,50 @@
+﻿<Window x:Class="Bank.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bank"
+        mc:Ignorable="d"
+        Title="Авторизация" Height="350" Width="300" FontWeight="Bold" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="{StaticResource MainBckgr}" ResizeMode="NoResize">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Border Background="{StaticResource ThrdBckgr}" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="230"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Quick Money" Foreground="White" HorizontalAlignment="Center" Grid.ColumnSpan="2" FontSize="15"/>
+                <Button Content="✖" Name="ExitBtn" Style="{StaticResource DeleteBtnStyle}" Grid.Column="1" FontSize="15" Width="30" Height="25" Margin="5,0" HorizontalAlignment="Right" Click="ExitBtn_Click"/>
+            </Grid>
+
+        </Border>
+
+        <Border CornerRadius="33" Background="White" Grid.Row="1" Margin="10">
+            <StackPanel>
+                <Label Content="Авторизация" FontSize="20" Margin="15,15"/>
+
+                <Label Content="Логин" Margin="15,0"/>
+                <TextBox Height="40" Margin="15,0" Name="LoginTxtBx" FontSize="20" VerticalContentAlignment="Center">
+
+
+                </TextBox>
+
+                <Label Content="Пароль" Margin="15,0"/>
+                <PasswordBox Height="40" Margin="15,0" Name="PasswordTxtBx" VerticalContentAlignment="Center" FontSize="20"/>
+
+                <Button Content="Войти" Style="{StaticResource MainBtnStyle}" Margin="15,30" FontSize="15" Width="200" Height="40" Foreground="White" Name="LoginBtn" Click="LoginBtn_Click"/>
+
+            </StackPanel>
+        </Border>
+        
+
+
+
+    </Grid>
+</Window>

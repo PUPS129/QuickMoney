@@ -1,0 +1,78 @@
+﻿<Page x:Class="Bank.Pages.Clientspage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Bank.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="571" d:DesignWidth="785" Background="{StaticResource MainBckgr}" FontFamily="Times New Roman" FontSize="20"
+      Title="Clientspage">
+
+    <DockPanel>
+        <Label Content="Клиенты" DockPanel.Dock="Top" Foreground="White"/>
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
+            
+            <Label Content="Поиск:" Foreground="White" Margin="5,0"/>
+
+            <Border  CornerRadius="10" Height="30" Width="180" Background="White" >
+                <TextBox Name="CllientsSearchTextBox" BorderThickness="0" BorderBrush="White" Height="25" Width="170" VerticalAlignment="Center" TextChanged="CllientsSearchTextBox_TextChanged"/>
+            </Border>
+
+
+            <Button Content="Добавить" x:Name="AddClientBtn" Style="{StaticResource MainBtnStyle}" Width="100" Height="30" Margin="10,0" Click="AddClientBtn_Click"/>
+
+        </StackPanel>
+
+
+
+        <ListBox Name="MainListBox" ItemsSource="{Binding clients}" ScrollViewer.CanContentScroll="False" BorderBrush="Black" Foreground="White" Background="{StaticResource ThrdBckgr }" Width="Auto">
+            <ListBox.ItemTemplate >
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="170"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0" BorderBrush="Black" CornerRadius="20" Height="170" Width="170">
+                            <Border.Background>
+                                <ImageBrush ImageSource="{Binding Photo, Converter={StaticResource ImgConv}}" />
+                            </Border.Background>
+                        </Border>
+
+                        <StackPanel Grid.Column="1">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="10" FontSize="20">
+                                    <Run Text="{Binding Surname}"/>
+                                    <Run Text="{Binding Name}"/>
+                                    <Run Text="{Binding Patronymic}"/>
+                                </TextBlock>
+                            </StackPanel>
+
+                            <TextBlock Margin="10,0">
+                                <Run Text="Номер телефона:"/>
+                                <Run Text="{Binding Phone}"/>
+                            </TextBlock>
+
+                            <TextBlock Margin="10,0">
+                            <Run Text="Дата рождения"/>
+                            <Run Text="{Binding Birthday, StringFormat=D, ConverterCulture=ru-RU}"/>
+                            </TextBlock>
+
+                            <TextBlock Margin="10,0">
+                                <Run Text="Номер паспорта:"/>
+                                <Run Text="{Binding Passport}"/>
+                            </TextBlock>
+
+                            <StackPanel Margin="10,30" Orientation="Horizontal">
+                                <Button Content="Редактировать" Name="EditBtn" Style="{StaticResource MainBtnStyle}" Tag="{Binding }" Width="160" Height="30" Margin="5,0" Click="EditBtn_Click"/>
+                                <!--<Button Content="Удалить" Width="90" Height="30" Name="DeleteClientBtn" Style="{StaticResource DeleteBtnStyle}" Tag="{Binding ClientID}" Click="DeleteClientBtn_Click"/>-->
+                            </StackPanel>
+
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </DockPanel>
+</Page>

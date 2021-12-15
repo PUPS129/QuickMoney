@@ -1,0 +1,70 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Bank.Pages"
+      xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="Bank.Pages.CurrencyRatesPage"
+      mc:Ignorable="d" 
+      d:DesignHeight="571" d:DesignWidth="785"  Background="{StaticResource MainBckgr}" FontFamily="Times New Roman" FontSize="20"
+      Title="CurrencyRatesPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="130*"/>
+            <RowDefinition Height="313*"/>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="130*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="365*"/>
+            <ColumnDefinition Width="200*"/>
+
+        </Grid.ColumnDefinitions>
+
+        <Border Background="White" CornerRadius="20" Width="360" Height="300" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1">
+                <Border CornerRadius="12" Width="320" Height="60" Background="{StaticResource MainBckgr}">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label Content="Евро €" Width="90" Height="32" Margin="0,15" Foreground="White" VerticalAlignment="Center"/>
+
+                        <Border CornerRadius="12" Background="White" Width="80" Height="30" >
+                            <TextBox x:Name="ValueEuro" Width="70" Height="25" MaxLength="4" TextAlignment="Center" BorderThickness="0" TextChanged="RepeatClick"/>
+                        </Border>
+
+                        <Border CornerRadius="12" Background="White" Width="120" Height="30" Margin="10,0">
+                            <TextBox x:Name="Euro" Width="110" Height="25" IsReadOnly="True" MaxLength="4" BorderThickness="0" TextAlignment="Center"/>
+                        </Border>
+                    </StackPanel>
+                </Border>
+
+                <Border CornerRadius="12" Width="320" Height="60" Background="{StaticResource MainBckgr}" Margin="0,10">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label Content="Доллар $" Width="90" Height="32" Margin="0,15" Foreground="White" VerticalAlignment="Center"/>
+
+                        <Border CornerRadius="12" Background="White" Width="80" Height="30" >
+                            <TextBox x:Name="ValueDollar" Width="70" Height="25" MaxLength="4" TextAlignment="Center" BorderThickness="0" TextChanged="RepeatClick"/>
+                        </Border>
+
+                        <Border CornerRadius="12" Background="White" Width="120" Height="30" Margin="10,0">
+                            <TextBox x:Name="Dollar" Width="110" Height="25" IsReadOnly="True" MaxLength="4" TextAlignment="Center" BorderThickness="0"/>
+                        </Border>
+                    </StackPanel>
+                </Border>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+
+                    <Button x:Name="CurrUpdateBtn" Content="Обновить" Style="{StaticResource MainBtnStyle}" Width="100" Height="30" Visibility="Collapsed" Click="CurrUpdate_Click"/>
+
+                    <Button x:Name="GoBackBtn" Content="Назад" Style="{StaticResource MainBtnStyle}" Width="100" Height="30" Margin="5,0" Click="GoBackBtn_Click"/>
+
+
+                </StackPanel>
+
+                <Label Content="*По данным ЦБ" HorizontalContentAlignment="Right" FontSize="15"/>
+            </StackPanel>
+        </Border>
+        
+    </Grid>
+</Page>

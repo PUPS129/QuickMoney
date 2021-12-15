@@ -1,0 +1,73 @@
+﻿<Page x:Class="Bank.Pages.ServiceListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Bank.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="571" d:DesignWidth="785"  Background="{StaticResource MainBckgr}" Foreground="White" FontFamily="Times New Roman" FontSize="20"
+      Title="ServiceListPage">
+
+    <DockPanel>
+        <Label Content="Список кредитных решений" DockPanel.Dock="Top" Foreground="White"/>
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
+            <Label Content="Поиск:" Foreground="White" Margin="5,0"/>
+
+            <Border  CornerRadius="10" Height="30" Width="180" Background="White" >
+                <TextBox BorderThickness="0" BorderBrush="White" Height="25" Width="170" VerticalAlignment="Center"/>
+            </Border>
+
+            <Button Name="AddServiceBtn"  Content="Добавить" Style="{StaticResource MainBtnStyle}" Width="100" Height="30" Margin="10,0" Click="AddServiceBtn_Click"/>
+
+        </StackPanel>
+
+        <ListBox Name="MainListBox" ItemsSource="{Binding services}" BorderBrush="Black" Foreground="White" Background="{StaticResource  ThrdBckgr}" Width="Auto">
+            <ListBox.ItemTemplate >
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Source=".././Images/3.png"  Width="150" Height="150" />
+                        
+                        <StackPanel Grid.Column="1" Margin="10,10">
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>
+                                    <Run Text="Наименование услуги - "/>
+                                    <Run Text="{Binding Title}"/>
+                                </TextBlock>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>
+                                    <Run Text="Процентная ставка - "/>
+                                    <Run Text="{Binding PercentRate}"/>
+                                    <Run Text="%"/>
+                                </TextBlock>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>
+                                    <Run Text="Срок выплаты - "/>
+                                    <Run Text="{Binding MaximumDuration, Converter={StaticResource YearConv}}"/>
+                                </TextBlock>
+                            </StackPanel>
+
+                            <StackPanel Margin="10,30" Orientation="Horizontal">
+                                <Button Content="Редактировать" Name="EditBtn" Style="{StaticResource MainBtnStyle}" Tag="{Binding }" Width="160" Height="30" Margin="5,0" Click="EditBtn_Click"/>
+
+                                <!--<Button Content="Удалить" Width="90" Height="30" Name="DeleteClientBtn" Tag="{Binding ClientID}" IsEnabled="False" Click="DeleteClientBtn_Click">
+
+                                </Button>-->
+                            </StackPanel>
+
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+    </DockPanel>
+</Page>

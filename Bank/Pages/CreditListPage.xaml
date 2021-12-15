@@ -1,0 +1,140 @@
+﻿<Page x:Class="Bank.Pages.CreditListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Bank.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="571" d:DesignWidth="785"  Background="{StaticResource MainBckgr}" FontFamily="Times New Roman" FontSize="20"
+      Title="CreditListPage">
+
+    <DockPanel>
+        <Label Content="Список кредитов"   DockPanel.Dock="Top" Foreground="White"/>
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
+
+            <Label Content="Поиск:" Foreground="White" Margin="5,0"/>
+            <Border  CornerRadius="10" Height="30" Width="180" Background="White" >
+                 <TextBox Name="CreditSearchTxtBx" BorderThickness="0" BorderBrush="White" Height="25" Width="170" VerticalAlignment="Center" TextChanged="CreditSearchTxtBx_TextChanged"/>
+            </Border>
+
+            <Label Content="Сортировать дату:"  Foreground="White"/>
+            <Border CornerRadius="10" Width="180" Height="30" Background="{StaticResource ComboBoxBckgr}">
+                <ComboBox Width="170" Height="25" FontSize="18" SelectionChanged="SelectSort" Name="OrderComboBox" BorderThickness="0">
+                    <ComboBoxItem Content="По убыванию"/>
+                    <ComboBoxItem Content="По возрастанию"/>
+                </ComboBox>
+            </Border>
+
+            <Button Name="UpdateListBox" Click="UpdateListBox_Click" Margin="10,0" Width="40" Height="30" Style="{StaticResource MainBtnStyle}">
+                <Image Source=".././Images/Updatew.png"/>
+            </Button>
+                    
+
+        </StackPanel>
+
+
+        <ListBox Name="MainListBox" ItemsSource="{Binding serviceClients}" ScrollViewer.CanContentScroll="False" Background="{StaticResource ThrdBckgr}" Foreground="White" Width="Auto" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Hidden" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <StackPanel Grid.Column="1">
+                            <StackPanel Orientation="Horizontal">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="550"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <TextBlock Margin="10" FontSize="15">
+                                      <Run Text="Кредит №"/>
+                                      <Run Text="{Binding ServiceClientID}"/>
+                                    </TextBlock>
+
+                                    <TextBlock Grid.Column="1" HorizontalAlignment="Right">
+                                        <Run Text="Статус - " FontSize="15"/>
+                                        <Run Text="{Binding Status, Converter={StaticResource CrdtStsConv}}" Foreground="{Binding Status, Converter={StaticResource CrdtClrConv}}" TextDecorations="{Binding Status, Converter={StaticResource CrdtDecoConv}}"/>
+                                    </TextBlock>
+                                </Grid>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="387"/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    
+                                    <!--Оформленная услуга-->
+                                    <StackPanel Margin="15,0">
+                                        <TextBlock FontSize="25" TextDecorations="Underline">
+                                            <Run Text="Оформленное кредитное решение:"/>
+                                        </TextBlock>
+                                        
+                                        <Label/>
+                                        <TextBlock>
+                                           <Run Text="Наименование услуги -"/>
+                                           <Run Text="{Binding Service1.Title}"/>
+                                        </TextBlock>
+                                        
+                                        <TextBlock Margin="0,5">
+                                            <Run Text="Дата оформления -"/>
+                                            <Run Text="{Binding DateRegistr, StringFormat=D, ConverterCulture=ru-RU}"/>
+                                        </TextBlock>
+
+                                        <TextBlock >
+                                           <Run Text="Сумма кредита -"/>
+                                           <Run Text="{Binding Amount}"/>
+                                           <Run Text="₽"/>
+                                        </TextBlock>
+
+                                    </StackPanel>
+                                    
+                                    <!--Оформленно на:-->
+                                    <StackPanel Grid.Column="1" Margin="35,0">
+                                        <TextBlock FontSize="25" TextDecorations="Underline">
+                                            <Run Text="Оформлен на:"/>
+                                        </TextBlock>
+                                        <Label/>
+
+                                        <TextBlock>
+                                            <Run Text="{Binding Client1.Surname}"/>
+                                            <Run Text="{Binding Client1.Name}"/>
+                                            <Run Text="{Binding Client1.Patronymic}"/>
+                                        </TextBlock>
+
+                                        <TextBlock Margin="0,5">
+                                           <Run Text="Номер телефона -"/>
+                                           <Run Text="{Binding Client1.Phone}"/>
+                                        </TextBlock>
+                                        
+                                        <TextBlock>
+                                           <Run Text="Дата рождения -"/>
+                                           <Run Text="{Binding Client1.Birthday, StringFormat=D, ConverterCulture=ru-RU}"/>
+                                        </TextBlock>
+
+                                        <TextBlock Margin="0,5">
+                                           <Run Text="Номер паспорта -"/>
+                                           <Run Text="{Binding Client1.Passport}"/>
+                                        </TextBlock>
+
+                                        
+                                    </StackPanel>
+
+                                </Grid>
+                            </StackPanel>
+
+
+                            <StackPanel Margin="10,10,0,50" Orientation="Horizontal">
+                                <Button Content="Управление кредитом" Width="200" Name="WatchInfoAboutCreditBtn" IsEnabled="{Binding Status, Converter={StaticResource AvaiblBtnChck}}" Style="{StaticResource MainBtnStyle}" Tag="{Binding }" Height="30" Margin="5,0" Click="WatchInfoAboutCreditBtn_Click"/>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+    </DockPanel>
+    
+</Page>

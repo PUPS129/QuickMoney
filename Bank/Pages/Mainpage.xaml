@@ -1,0 +1,59 @@
+﻿<Page x:Class="Bank.Pages.Mainpage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Bank.Pages"
+      mc:Ignorable="d" 
+
+      d:DesignHeight="571" d:DesignWidth="785" MinHeight="571" MinWidth="785" Background="{StaticResource MainBckgr}" FontFamily="Times New Roman" FontSize="20"
+      Title="Mainpage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="313*"/>
+            <RowDefinition Height="60*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="365*"/>
+            <ColumnDefinition Width="100*"/>
+
+        </Grid.ColumnDefinitions>
+
+        <Rectangle Fill="White" Width="507" RadiusX="15" RadiusY="15" MaxHeight="413" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+
+        <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Margin="0,15" Width="210">
+            <Image Source="./../Images/logo.png" Height="120" Width="120"  VerticalAlignment="Center"/>
+
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0,25">
+                
+                <Button Name="FullNewCreditBtn" Style="{StaticResource MainBtnStyle}" Height="50" Width="210" Click="FullNewCreditBtn_Click">
+                    <TextBlock Text="Оформление нового клиента" FontWeight="SemiBold" TextWrapping="Wrap" TextAlignment="Center"/>
+                </Button>
+
+                <Button Name="QuickCreditBtn" Style="{StaticResource MainBtnStyle}" Height="45" Width="210" Margin="0,15" Click="QuickCreditBtn_Click">
+                    <TextBlock Text="Быстрое оформление" FontWeight="SemiBold" TextWrapping="Wrap" TextAlignment="Center"/>
+                </Button>
+
+                <!--<Button Name="ServiceListBtn" Style="{StaticResource MainBtnStyle}" Width="210" Height="50" Click="ServiceListBtn_Click">
+                    <StackPanel Orientation="Horizontal">
+                        --><!--<Image Source="./../Images/3.png" Width="35"/>--><!--
+                        <TextBlock Text="Список кредитных решений" TextWrapping="Wrap" TextAlignment="Center" Width="180" Margin="5,0"/>
+                    </StackPanel>
+                    
+                </Button>-->
+
+                <Button Name="GoToCurrencyRatesPage" Style="{StaticResource MainBtnStyle}" Height="35" Width="210" Click="GoToCurrencyRatesPage_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <!--<Image Source="./../Images/4.png" Width="40"/>-->
+                        <TextBlock Text="Курсы валют" FontWeight="SemiBold" Width="180" TextAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                
+
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

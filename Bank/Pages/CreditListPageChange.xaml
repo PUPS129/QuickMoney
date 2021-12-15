@@ -1,0 +1,86 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Bank.Pages"
+      xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="Bank.Pages.CreditListPageChange"
+      mc:Ignorable="d" 
+      d:DesignHeight="571" d:DesignWidth="785" Background="{StaticResource MainBckgr}" FontFamily="Times New Roman" FontSize="20" Foreground="Black"
+      Title="CreditListPageChange">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="65"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0">
+            <Border Width="Auto" Height="40" Background="White" CornerRadius="12" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <StackPanel Orientation="Horizontal">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="240"/>
+                            <ColumnDefinition Width="340"/>
+                            <ColumnDefinition Width="120"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Name="RegServTxtBx" Foreground="Black" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <Run Text="Ежемесячные выплаты - " FontWeight="Bold" />
+                        </TextBlock>
+
+                        <TextBlock TextDecorations="Underline" Grid.Column="1" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center">
+                             <Run Name="SurnameTxtBl"/>
+                             <Run Name="NameTxtBl"/>
+                             <Run Name="PatronymicTxtBl"/>
+                        </TextBlock>
+
+
+                        <StackPanel Orientation="Horizontal" Grid.Column="2">
+                            <Button Name="Updt" Style="{StaticResource MainBtnStyle}" Click="Updt_Click" Height="30" Width="50">
+                                <Image Source=".././Images/Updatew.png"/>
+                            </Button>
+                            <Button Content="Назад" Name="GoBackBtn" Tag="{Binding }" Grid.Column="2" Style="{StaticResource MainBtnStyle}" Margin="5,0" Width="60" Height="30" Click="GoBackBtn_Click"/>
+                        </StackPanel>
+
+                    </Grid>
+
+                </StackPanel>
+            </Border>
+        </StackPanel>
+
+
+        <Border Background="White" CornerRadius="33" Width="Auto" Height="Auto" Margin="0,10" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
+            <!--//ItemsSource="{Binding payments}"-->
+            <DataGrid Name="MainDataGrid" HorizontalAlignment="Left"  Width="Auto" Height="Auto" Margin="15,5" BorderThickness="0" BorderBrush="Black" VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Hidden" CanUserSortColumns="False" CanUserDeleteRows="False" IsReadOnly="True" CanUserReorderColumns="False" CanUserResizeColumns="False" FontSize="20" AutoGenerateColumns="False" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Номер платежа" Binding="{Binding PaymentID}" />
+                    <DataGridTextColumn Header="Сумма" Binding="{Binding Amount}"/>
+                    <DataGridTextColumn Header="Дата платежа" Binding="{Binding Date, StringFormat=D, ConverterCulture=ru-RU}"/>
+                    <!--<DataGridTextColumn Header="Оформленная услуга" Binding="{Binding ServiceClient.Service1.Title}"/>-->
+
+                    <DataGridTemplateColumn Header="Статус">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+
+                                <Border Background="{Binding CurPayStatus, Converter={StaticResource CrdtClrConv}}" BorderBrush="Black" BorderThickness="2" CornerRadius="50" Width="20" Height="20"/>
+
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="PayBtn" FontSize="15" Content="Оплатить" IsEnabled="{Binding CurPayStatus, Converter={StaticResource AvaiblBtnChck}}" Tag="{Binding }" Width="100" Height="30" Style="{StaticResource MainBtnStyle}" Click="PayBtn_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </Border>
+    </Grid>
+</Page>

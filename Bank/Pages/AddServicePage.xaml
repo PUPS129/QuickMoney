@@ -1,0 +1,76 @@
+﻿<Page x:Class="Bank.Pages.AddServicePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Bank.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="571" d:DesignWidth="785"  Background="{StaticResource MainBckgr}" FontFamily="Times New Roman" FontSize="20" Foreground="White"
+      Title="AddServicePage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="130*"/>
+            <RowDefinition Height="313*"/>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="130*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="365*"/>
+            <ColumnDefinition Width="200*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Добавление услуги" Foreground="White" Grid.RowSpan="4"/>
+
+        <Rectangle Fill="White" Width="360" RadiusX="15" RadiusY="15" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,15" Width="290">
+
+            <Border Background="{StaticResource MainBckgr}" CornerRadius="15" Height="50">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" Width="130" FontSize="20" Margin="5,0">
+                    <Run Name="ServiceTitleLbl" Text="Наименование услуги"/>
+                    </TextBlock>
+
+                    <Border Background="White" CornerRadius="15" Width="145" Height="40">
+                        <TextBox Name="ServiceTitleTxtBx" Width="130" Height="35" TextAlignment="Center" BorderThickness="0" FontSize="25"/>
+                    </Border>
+
+                </StackPanel>
+            </Border>
+
+            <Border Background="{StaticResource MainBckgr}" CornerRadius="15" Height="50" Margin="0,10">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" Width="130" FontSize="20" Margin="5,0">
+                    <Run Name="PaymentDurationLbl" Text="Срок выплаты кредита"/>
+                    </TextBlock>
+
+                    <Border Background="White" CornerRadius="15" Width="145" Height="40">
+                        <TextBox Name="PaymentDurationTxtBx" Width="130" Height="35" TextAlignment="Center" BorderThickness="0" FontSize="25"/>
+                    </Border>
+
+                </StackPanel>
+            </Border>
+
+            <Border Background="{StaticResource MainBckgr}" CornerRadius="15" Height="50">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" Width="130" FontSize="20" Margin="5,0">
+                    <Run Name="PercentRateLbl" Text="Процентная ставка"/>
+                    </TextBlock>
+
+                    <Border Background="White" CornerRadius="15" Width="145" Height="40">
+                        <TextBox Name="PercentRateTxtBx" Width="130" Height="35" TextAlignment="Center" BorderThickness="0" FontSize="25"/>
+                    </Border>
+
+                </StackPanel>
+            </Border>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30">
+                <Button Content="Добавить" Name="AddBtn" Style="{StaticResource MainBtnStyle}" Width="100" Height="30" Margin="10,0" Click="AddBtn_Click"/>
+                <Button Content="Назад" Name="GoBackBtn" Style="{StaticResource MainBtnStyle}" Width="100" Height="30" Click="GoBackBtn_Click"/>
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Page>
